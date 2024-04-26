@@ -21,11 +21,22 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up C compiler
+        if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest' }}
         uses: actions/setup-python@v3
         with:
           python-version: "3.x"
 
       - name: Run script to test unsigned int and unsigned long sizes
+        if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest' }}
         run: |
           chmod +x test_sizes.sh
           ./test_sizes.sh ${{ matrix.os }}
+
+      - name: Set up PowerShell
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: microsoft/setup-powershell@v1
+
+      - name: Run PowerShell script to test unsigned int and unsigned long sizes
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: |
+          .\test_sizes.ps1 ${{ matrix.os }}
