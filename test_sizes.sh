@@ -5,8 +5,8 @@ platform=$1
 
 # Function to print header
 print_header() {
-    echo "Platform | unsigned int | unsigned long | uintptr_t"
-    echo "---------------------------------------------------"
+    echo "Platform | unsigned int | unsigned long | uintptr_t | unsigned long long"
+    echo "------------------------------------------------------------------------"
 }
 
 # Function to test sizes

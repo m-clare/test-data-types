@@ -3,8 +3,8 @@ $platform = $args[0]
 
 # Function to print header
 function Print-Header {
-    Write-Host "Platform | unsigned int | unsigned long | uintptr_t"
-    Write-Host "---------------------------------------"
+    Write-Host "Platform | unsigned int | unsigned long | uintptr_t | unsigned long long"
+    Write-Host "------------------------------------------------------------------------"
 }
 
 # Function to test sizes

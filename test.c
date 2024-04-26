@@ -8,5 +8,7 @@ int main() {
     printf("%lu", (unsigned long)sizeof(unsigned long));
     printf(" | ");
     printf("%lu", (unsigned long)sizeof(uintptr_t));
+    printf(" | ");
+    printf("%lu", (unsigned long)sizeof(unsigned long long));
     return 0;
 }
