@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up C compiler
         if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest' }}
@@ -32,11 +32,8 @@ jobs:
           chmod +x test_sizes.sh
           ./test_sizes.sh ${{ matrix.os }}
 
-      - name: Set up PowerShell
-        if: ${{ matrix.os == 'windows-latest' }}
-        uses: microsoft/setup-powershell@v1
-
       - name: Run PowerShell script to test unsigned int and unsigned long sizes
+        shell: pwsh
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
           .\test_sizes.ps1 ${{ matrix.os }}
