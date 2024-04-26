@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up C compiler
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      - name: Run script to test unsigned int and unsigned long sizes
+        run: |
+          chmod +x test_sizes.sh
+          ./test_sizes.sh ${{ matrix.os }}
