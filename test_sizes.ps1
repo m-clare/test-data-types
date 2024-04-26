@@ -11,15 +11,13 @@ function Print-Header {
 function Test-Sizes {
     Write-Host -NoNewline "$platform | "
     # Compile C program to check sizes
-    $output = & gcc -o size_test test.c 2>&1
+    $output = gcc -o size_test test.c 2>&1
     if ($LASTEXITCODE -eq 0) {
-        $output = & size_test
+        $output = .\size_test.exe
         Write-Host -NoNewline $output
     } else {
         Write-Host "Compilation failed: $output"
     }
-    # Remove compiled program
-    Remove-Item -Path "size_test.exe" -ErrorAction SilentlyContinue
 }
 
 # Main function
